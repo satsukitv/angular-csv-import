@@ -1,10 +1,13 @@
 {
     "name": "angular-csv-import",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "main": "dist/angular-csv-import.js",
     "license": "MIT",
     "authors": [
         "Bahaaldine AZARMI <bahaaldine@gmail.com>"
+    ],
+    "contributors": [
+        "Charlie Wagner <me@satsuki.tv>"
     ],
     "description": "angular component let's you import a CSV file",
     "keywords": [

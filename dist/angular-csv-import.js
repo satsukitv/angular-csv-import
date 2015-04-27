@@ -1,4 +1,4 @@
-/*! angular-csv-import - v0.0.15 - 2015-04-08
+/*! angular-csv-import - v0.0.16 - 2015-04-27
 * Copyright (c) 2015 ; Licensed  */
 'use strict';
 
@@ -12,14 +12,20 @@ csvImport.directive('ngCsvImport', function() {
 		scope:{
 			content:'=',
 			header: '=',
-			headerVisible: '=',
+			headerVisible: '=?',
 			separator: '=',
 			result: '='
 		},
 		template: '<div><div ng-show="header && headerVisible"><div class="label">Header</div><input type="checkbox" ng-model="header"></div>'+
 			'<div ng-show="separator" ><div class="label">Seperator</div><input type="text" ng-change="changeSeparator" ng-model="separator"></div>'+
-			'<div><input class="btn cta gray" type="file"/></div></div>',
+			'<div><input id="csvFileInput" class="btn cta gray" type="file"/></div></div>',
 		link: function(scope, element) {
+			scope.$watch('content', function() {
+				if (!scope.content) {
+					document.getElementById("csvFileInput").value = "";
+					scope.fileName = "";
+				}
+			});
 			element.on('keyup', function(e){
 				if ( scope.content != null ) {
 					var content = {
@@ -34,6 +40,7 @@ csvImport.directive('ngCsvImport', function() {
 
 			element.on('change', function(onChangeEvent) {
 				var reader = new FileReader();
+				scope.fileName = onChangeEvent.target.files[0].name;
 				reader.onload = function(onLoadEvent) {
 					scope.$apply(function() {
 						var content = {
