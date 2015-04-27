@@ -1,7 +1,8 @@
 {
   "name": "angular-csv-import",
   "author": "Bahaaldine AZARMI <bahaaldine@gmail.com>",
-  "version": "0.0.16",
+  "contributors": ["Charlie Wagner <me@satsuki.tv>"],
+  "version": "0.0.17",
   "engines": {
     "node": ">= 0.10.0"
   },
